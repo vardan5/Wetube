@@ -25,5 +25,6 @@ export class HeaderComponent implements OnInit{
 
   logout() {
     this.oidcSS.logoff().subscribe((result) => console.log(result));
+    this.oidcSS.logoffLocal();
   }
 }

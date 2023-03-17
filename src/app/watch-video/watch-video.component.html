@@ -55,16 +55,16 @@
           <button *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn" (click)="subscribeToUser()">SUBSCRIBE</button>
 
           <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked" mat-raised-button color="accent" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
-          
+
         </mat-card-header>
 
-        <!-- <app-video-description></app-video-description>
+        <!-- <app-video-description></app-video-description> -->
         <mat-divider></mat-divider>
-        <app-comments></app-comments> -->
+        <app-comments [videoId]="videoId"></app-comments>
     </div>
 </div>
-<!-- <div fxFlex="5%"></div>
+<div fxFlex="5%"></div>
     <div fxFlex="30%" class="suggestion-bar">
-        <app-suggestion-bar></app-suggestion-bar>
+        <!-- <app-suggestion-bar></app-suggestion-bar> -->
     </div>
-</div> -->
+</div>
