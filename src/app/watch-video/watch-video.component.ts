@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
 import { VideoDto } from '../video-dto';
 import { VideoService } from '../video.service';
 
@@ -13,8 +14,10 @@ export class WatchVideoComponent {
   videoId!: string;
   videoData = {} as VideoDto;
   videoAvailable: boolean = false;
+  showSubscribeButton: boolean = true;
+  showUnSubscribeButton: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService) {
+  constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService, private userService: UserService) {
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.videoService.getVideo(this.videoId).subscribe(data => {
       this.videoData=data;
@@ -22,7 +25,35 @@ export class WatchVideoComponent {
       // this.title.setValue(this.videoData.videoName);
       // this.description.setValue(this.videoData.description);
       // this.videoStatus.setValue(this.videoData.videoStatus);
+
       
     });
+  }
+
+
+  likeVideo() {
+    this.videoService.likeVideo(this.videoId).subscribe(data => {
+      this.videoData.likeCount = data.likeCount;
+      this.videoData.dislikeCount = data.dislikeCount;
+    })
+  }
+
+  dislikeVideo() {
+    this.videoService.dislikeVideo(this.videoId).subscribe(data => {
+      this.videoData.likeCount = data.likeCount;
+      this.videoData.dislikeCount = data.dislikeCount;
+    })
+  }
+
+  subscribeToUser(){
+    this.userService.subscribeToUser(this.videoData.userId)
+    this.showSubscribeButton = false;
+    this.showUnSubscribeButton = true;
+  }
+
+  unSubscribeToUser(){
+    this.userService.unsubscribeToUser(this.videoData.userId)
+    this.showSubscribeButton = true;
+    this.showUnSubscribeButton = false;
   }
 }

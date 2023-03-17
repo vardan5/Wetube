@@ -85,6 +85,10 @@ export class SaveVideoMetadataComponent {
     this.videoData.description = this.saveVideoDetailsForm.get('description')?.value;
     //this.videoData.tags = this.videoData.tags;
     this.videoData.videoStatus = this.saveVideoDetailsForm.get('videoStatus')?.value;
+    this.videoData.dateUploaded = new Date();
+    this.videoData.likeCount = 0;
+    this.videoData.dislikeCount = 0;
+    this.videoData.viewCount = 0;
 
     this.videoService.saveVideoMetadata(this.videoData).subscribe(data=> {
       this.matSnackBar.open("Video Metadata Updated Successfully", "OK")
