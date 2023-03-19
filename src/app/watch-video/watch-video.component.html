@@ -23,44 +23,68 @@
 <div fxLayout="row">
   <div fxFlex="65%" class="video-detail">
     <div fxLayout="column" fxLayoutGap="8px">
-      <app-video-player *ngIf="videoAvailable" [videoUrl]="this.videoData.videoUrl"></app-video-player>
-      <div class="mat-title">{{this.videoData.videoName}}</div>
+      <app-video-player class="videoplayer" *ngIf="videoAvailable" [videoUrl]="this.videoData.videoUrl"></app-video-player>
 
-      <div fxLayout="row">
-        <div fxFlex="50%">
+      <div><h1 class="video-title">{{this.videoData.videoName}}</h1></div>
+
+      <!-- row container -->
+      <div class="container-row"> 
+        <!-- wrap column 1: channel card -->
+        <div class="user-card">
+          <!-- profile pic -->
+          <div class="user-card-pic">
+            <a><img [src]="this.userData.profilePicUrl" class="profile-pic"></a>
+          </div>
+          <!-- name and subs -->
+          <div class="user-card-name">
+            <div class="video-title">
+              <mat-card-title class="">{{this.userData.fullName}}</mat-card-title>
+            </div>
+            <div class="user-sub-count">
+              <mat-card-subtitle>{{formatNumber(this.userData.subscribersCount)}}</mat-card-subtitle>
+            </div>
+          </div>
+          <!-- sub button -->
+          <div class="user-sub-button">
+            <button *ngIf="showSubscribeButton" class="subscribe-button" mat-fab extended color="warn" (click)="subscribeToUser()">SUBSCRIBE</button>
+
+            <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked" mat-fab extended color="accent" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
+          </div>
+        
+        </div>
+        <!-- wrap column 2: button chips -->
+        <div class="chips-card">
+          <div class="like-dislike-chip chip">
+            <button mat-fab extended color="link" class="like-but">
+              <mat-icon>thumb_up_off_alt</mat-icon>
+              {{this.videoData.likeCount}}
+            </button>
+            <span class="like-separator"></span>
+            <button mat-fab extended color="link" class="dislike-but">
+              <mat-icon>thumb_down_off_alt</mat-icon>
+            </button>
+          </div>
+          <button mat-fab extended color="link" class="download-chip chip"> download</button>
+          <button mat-fab extended color="link" class="share-chip chip">share</button>
+          <button mat-fab extended color="link" class="save-chip chip">save</button>
+
+        </div>
+      </div>
+      <div class="description-container">
+        <div class="desc-item">
           <span class="view-count">{{this.videoData.viewCount}} Views</span>
           <span class="dot"></span>
-          <span class="video-upload-date">{{this.videoData.description}}</span>
+          <span class="video-upload-date">{{this.videoData.dateUploaded}}</span>
         </div>
-        <div fxFlex="50%" fxLayoutAlign="end">
-          <span class="like-dislike-section">
-            <button mat-icon-button class="thumbs-up" (click)="likeVideo()" aria-label="Example icon button with a vertical three dot icon">
-              <mat-icon>thumb_up_off_alt</mat-icon>
-                {{this.videoData.likeCount}}
-            </button>
-            <button mat-icon-button class="thumbs-down" (click)="dislikeVideo()" aria-label="Example icon button with a vertical three dot icon">
-              <mat-icon>thumb_down_off_alt</mat-icon>
-              {{this.videoData.dislikeCount}}
-            </button>
-          </span>
+        
+        <div class="desc-item">
+          <p>
+            {{this.videoData.description}}
+          </p>
         </div>
       </div>
       <mat-divider></mat-divider>
-
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Programming Techie</mat-card-title>
-        <mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
-
-        <button *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn" (click)="subscribeToUser()">SUBSCRIBE</button>
-
-        <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked" mat-raised-button color="accent" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
-
-      </mat-card-header>
-
-      <!-- <app-video-description></app-video-description> -->
-      <mat-divider></mat-divider>
-      <app-comments [videoId]="videoId"></app-comments>
+      <app-comments [videoId]="videoId" class="comments"></app-comments>
     </div>
   </div>
   
