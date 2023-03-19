@@ -1,0 +1,35 @@
+.sugg{
+    /* background-color: rgb(27, 122, 112); */
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    min-width: 0;
+    
+
+}
+.sugg-title-div{
+    display:flex;
+    flex-direction: column;
+    min-width: 0;
+    flex-shrink: 1;
+}
+
+.sugg-title{
+    align-self: center;
+    font-size: large;
+}
+
+.flexbox-container{
+    
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    align-items:stretch;
+    /* background-color: rgb(89, 163, 65); */
+    
+}
+
+.flexbox-item{
+    padding: 0.3rem;
+}
+

@@ -1,0 +1,11 @@
+<div class="sugg">
+    <div class="sugg-title-div">
+        <h3 class="sugg-title">Suggested Videos</h3>
+    </div>
+    
+    <div *ngFor="let video of suggestedVideos" class="flexbox-container">
+        <div class="flexbox-item video-card-div">
+            <app-video-card-landscape [video]="video"></app-video-card-landscape>
+        </div>
+    </div>
+</div>

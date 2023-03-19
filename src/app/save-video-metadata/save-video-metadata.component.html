@@ -1,8 +1,8 @@
 <div class="save-video-detail" fxLayout="row wrap" fxLayoutAlign="center">
-    <div fxFlex="20%">Hi</div>
+    <div fxFlex="20%"></div>
 
     <div fxFlex="30%">
-        <div class="mat-title">Add Video Metadata</div>
+        <div >Add Video Metadata</div>
         <form [formGroup]="saveVideoDetailsForm">
             <div>
                 <mat-form-field appearance="fill">
@@ -71,9 +71,13 @@
     </div>
 
     <div fxFlex="30%">
-        Video Player
+        <div class="mat-title">Video Player</div>
         <app-video-player [videoUrl]="videoUrl"></app-video-player>
+        <div *ngIf="showVideoUrl">
+            <h1>You can now view the video </h1>
+            <a mat-raised-button color="primary" href="http://localhost:4200/watch-video/{{videoId}}">Watch Video</a>
+          </div>
     </div>
 
-    <div fxFlex="20%">Hi</div>
+    <div fxFlex="20%"></div>
 </div>

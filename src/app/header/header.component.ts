@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +12,16 @@ export class HeaderComponent implements OnInit{
 
 
   isAuthenticated: boolean = false;
+  userName: String = "";
 
-  constructor(private oidcSS: OidcSecurityService) {}
+  constructor(private oidcSS: OidcSecurityService, private userService: UserService) {}
 
   ngOnInit(): void {
     this.oidcSS.isAuthenticated$.subscribe(({isAuthenticated}) => {
       this.isAuthenticated = isAuthenticated;
-    })
+    });
+    
+    
   }
 
   login() {
@@ -24,7 +29,12 @@ export class HeaderComponent implements OnInit{
   }
 
   logout() {
-    this.oidcSS.logoff().subscribe((result) => console.log(result));
+    this.oidcSS.logoffAndRevokeTokens();
     this.oidcSS.logoffLocal();
+  }
+
+  loadName(){
+    this.userName=this.userService.getCurrentUser().fullName;
+    console.log("Username is "+this.userName);
   }
 }

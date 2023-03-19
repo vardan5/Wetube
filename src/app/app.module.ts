@@ -41,6 +41,8 @@ import { MatCardModule } from '@angular/material/card';
 import { CallbackComponent } from './callback/callback.component';
 import { CommentsComponent } from './comments/comments.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { SuggestionBarComponent } from './suggestion-bar/suggestion-bar.component';
+import { VideoCardLandscapeComponent } from './video-card-landscape/video-card-landscape.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { MatMenuModule } from '@angular/material/menu';
     FeaturedComponent,
     VideoCardComponent,
     CallbackComponent,
-    CommentsComponent
+    CommentsComponent,
+    SuggestionBarComponent,
+    VideoCardLandscapeComponent
   ],
   imports: [
     BrowserModule,

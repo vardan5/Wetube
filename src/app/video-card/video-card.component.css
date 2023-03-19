@@ -1,6 +1,8 @@
 .example-card {
-    max-width: 400px;
-    width: 250px;
+    /* max-width: 400px; */
+    width:auto;
+    height:auto;
+    padding-bottom: 7px;
 }
 
 .example-header-image {

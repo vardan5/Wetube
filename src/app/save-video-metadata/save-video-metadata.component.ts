@@ -27,12 +27,17 @@ export class SaveVideoMetadataComponent {
   fileSelected = false;
   videoData = {} as VideoDto;
   videoUrl!: string;
+  showVideoUrl=false;
   
   constructor(private activatedRoute: ActivatedRoute, private videoService:VideoService, private matSnackBar:MatSnackBar) {
 
     this.videoId = this.activatedRoute.snapshot.params['videoId'];
     this.videoService.getVideo(this.videoId).subscribe(data => {
       this.videoData=data;
+      
+      if(this.videoData.tags==undefined){
+        this.videoData.tags=[];
+      }
       this.videoUrl=data.videoUrl;
       this.title.setValue(this.videoData.videoName);
       this.description.setValue(this.videoData.description);
@@ -77,7 +82,7 @@ export class SaveVideoMetadataComponent {
     .subscribe(data => {
       console.log(data);
       this.matSnackBar.open("Thumbnail Upload Successful", "Ok");
-    })
+    });
   }
 
   saveVideoMetadata(){
@@ -91,6 +96,7 @@ export class SaveVideoMetadataComponent {
     this.videoData.viewCount = 0;
 
     this.videoService.saveVideoMetadata(this.videoData).subscribe(data=> {
+      this.showVideoUrl = true;
       this.matSnackBar.open("Video Metadata Updated Successfully", "OK")
     })
   }

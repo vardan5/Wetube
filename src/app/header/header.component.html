@@ -5,14 +5,14 @@
       <mat-icon>menu</mat-icon>
     </button>
 
-    <span>WeTube</span>
+    <a mat-button routerLink="featured"><div>WeTube</div></a>
     <span class="example-spacer"></span>
 
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button>
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/upload-video">
       <mat-icon>video_call</mat-icon>
     </button>
 
@@ -20,7 +20,8 @@
       <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Studio</button>
+      <button mat-menu-item (click)="loadName()">Welcome, {{userName}}!</button>
+      <mat-divider></mat-divider>
       <button mat-menu-item>Settings</button>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>

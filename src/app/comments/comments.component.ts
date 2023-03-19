@@ -14,7 +14,7 @@ import { CommentDto } from '../comment-dto';
 export class CommentsComponent implements OnInit{
 
   @Input()
-  videoId: String = '';
+  videoId: String = '';  
 
   showCommentSection: boolean = true;
   commentsForm: FormGroup;
@@ -25,6 +25,7 @@ export class CommentsComponent implements OnInit{
     this.commentsForm = new FormGroup({ 
       comment: new FormControl('comment'),
     });
+    
   }
 
   ngOnInit(): void {

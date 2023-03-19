@@ -1,0 +1,39 @@
+<!-- 
+<mat-card class="example-card" routerLink="/watch-video/{{video.videoId}}">
+    <mat-card-header>
+        <mat-card-title-group>
+            <span fxLayout="column wrap"></span>
+            <img mat-card-image [src]="video.thumbnailUrl" alt="Thumbnail" >
+            <mat-card-title>{{video.videoName}}</mat-card-title>
+            <mat-card-subtitle>{{video.userId}}</mat-card-subtitle>
+            <mat-card-subtitle>{{video.viewCount}} Views</mat-card-subtitle>
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      
+    </mat-card-content>
+</mat-card> -->
+
+<div class="card-landscape" style="cursor: pointer;" (click)="navigate()"> <!--[routerLink]="['/watch-video/'+video.videoId+'/']" -->
+    <div fxFlex="39%" class="img-outer-div">
+        <div fxLayout="column" fxLayoutGap="8px" class="img-inner-div">
+            <img class="thumbnail" [src]="video.thumbnailUrl" alt="Thumbnail" >
+        </div>
+    </div>
+    <div fxFlex="1%" ></div>
+    <div fxFlex="60%" class="card-details">
+        <div fxLayout="row" class="card-title-div">
+            <mat-card-title >
+                <span class="card-title">{{video.videoName}}</span>
+            </mat-card-title>
+        </div>
+
+        <div fxLayout="row " class="card-subtitle">
+            <mat-card-subtitle>{{video.userId}}</mat-card-subtitle>
+        </div>
+
+        <div fxLayout="row " class="card-subtitle">
+            <mat-card-subtitle>{{video.viewCount}} Views</mat-card-subtitle>
+        </div>
+    </div>
+</div>
