@@ -1,0 +1,10 @@
+.channels-panel{
+    display: flex;
+    flex-wrap: wrap;
+}
+.channel-card{
+    margin-right: 4px;
+    display: inline-block;
+    width: 210px;
+    margin-bottom: 24px;
+}

@@ -9,6 +9,11 @@ import { HistoryComponent } from './history/history.component';
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { FeaturedComponent } from './featured/featured.component';
 import { CallbackComponent } from './callback/callback.component';
+import { UserChannelComponent } from './user-channel/user-channel.component';
+import { ChannelPlaylistsComponent } from './channel-playlists/channel-playlists.component';
+import { ChannelChannelsComponent } from './channel-channels/channel-channels.component';
+import { ChannelAboutComponent } from './channel-about/channel-about.component';
+import { ChannelVideosComponent } from './channel-videos/channel-videos.component';
 
 const routes: Routes = [
   { path: 'upload-video', component: UploadVideoComponent },
@@ -23,6 +28,14 @@ const routes: Routes = [
     ] 
   },
   { path: 'callback', component: CallbackComponent },
+  { path: 'channel/:channelName', component: UserChannelComponent,
+    children: [ 
+      { path: 'channel-videos', component: ChannelVideosComponent },
+      { path: 'channel-playlists', component: ChannelPlaylistsComponent },
+      { path: 'channel-channels', component: ChannelChannelsComponent },
+      { path: 'channel-about', component: ChannelAboutComponent },
+    ]
+  },
 ];
 
 @NgModule({

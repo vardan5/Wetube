@@ -1,0 +1,14 @@
+<div fxLayout="row wrap">
+    <h1>My Videos</h1>
+</div>
+
+<div *ngIf="this.videosAvailable"  fxLayout="row wrap" fxLayoutGap="12px grid">
+    <div fxFlex="30%" *ngFor="let video of videoList">
+        <app-video-card [video]="video"></app-video-card>
+    </div>
+</div>
+
+<div fxLayout="row wrap" *ngIf="!this.videosAvailable">
+    <span><h2>No Videos Available</h2></span>
+    <span><button mat-raised-button routerLink="/upload-video">Click here to Upload Video</button></span>
+</div>

@@ -1,0 +1,80 @@
+<div class="main-container" >
+    <div class="header-container">
+        <div class="banner-container" >
+            <img [src]="this.channelData.bannerPicUrl" class="banner">
+        </div>
+
+        <div class="user-card-container">
+            
+            <div class="user-card">
+                <!-- profile pic -->
+                <div class="user-card-pic">
+                  <a><img [src]="this.channelData.profilePicUrl" class="profile-pic"></a>
+                </div>
+                <!-- name and subs -->
+                <div class="user-card-name">
+                  <div class="video-title">
+                    <mat-card-title class="">@{{this.channelData.channelName}}</mat-card-title>
+                  </div>
+                  <div class="user-sub-count">
+                    <mat-card-subtitle>{{formatNumber(this.subscribersCount)}}</mat-card-subtitle>
+                  </div>
+                </div>          
+            </div>       
+               
+            <!-- sub button -->
+            <div class="user-sub-button">
+                <button *ngIf="showSubscribeButton" class="subscribe-button" mat-fab extended color="warn" (click)="subscribeToUser()">SUBSCRIBE</button>
+    
+                <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked" mat-fab extended color="accent" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab" 
+                    mat-button color="primary" 
+                    (click)="setOpenedTab(0)">
+                Videos
+            </button>
+
+            <button class="tab" 
+                    mat-button color="primary" 
+                    (click)="setOpenedTab(1)">
+                Channels
+            </button>
+
+            <button class="tab" 
+                    mat-button color="primary" 
+                    (click)="setOpenedTab(2)">
+                About
+            </button>
+
+            <button class="tab" 
+                    mat-button color="primary" 
+                    (click)="setOpenedTab(3)">
+                Playlists
+            </button>
+        </div>
+
+    </div>
+
+    <div class="main-body-content" *ngIf="this.channelAvailable">
+        <!-- <router-outlet></router-outlet> -->
+        <div *ngIf="openedTab===0">
+            <app-channel-videos [videoIdList]="this.channelData.uploadedVideos"></app-channel-videos>
+        </div>
+        <div *ngIf="openedTab===1">
+            <app-channel-channels [channelNameList]="this.channelData.featuredChannels"></app-channel-channels>
+        </div>
+        <div *ngIf="openedTab===2">
+            <app-channel-about [channelData]="this.channelData"></app-channel-about>
+        </div>
+        <div *ngIf="openedTab===3">
+            <app-channel-playlists [playlistIdList]="this.channelData.myPlaylists"></app-channel-playlists>
+        </div>
+
+    </div>
+
+
+</div>
+

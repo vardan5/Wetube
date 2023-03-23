@@ -30,10 +30,6 @@
   text-overflow: ellipsis;
 }
 
-.user-card-pic {
-  background-size: cover;
-}
-
 .container-row{
   /* border: 1px solid red; */
   display: flex;
@@ -43,6 +39,7 @@
   justify-content: space-between;
   
 }
+
 .user-card{
   /* border: 1px solid rgb(0, 255, 0); */
   display: flex;
@@ -56,6 +53,7 @@
   height: 4rem;
   aspect-ratio: 1/1;
   margin-left: 0.5rem;
+  background-size: cover;
 }
 .profile-pic{
   width: 100%;
@@ -70,6 +68,15 @@
   /* border: 1px solid rgb(0, 26, 255); */
   margin-left: 0.5rem;
 }
+.subscribe-button {
+  height: 40px;
+  justify-content: right;
+}
+.subscribe-button-clicked {
+  background-color: gray;
+  height: 40px;
+}
+
 .chips-card{
   /* border: 1px solid rgb(0, 255, 0); */
   display: flex;
@@ -125,15 +132,6 @@
   
 }
 
-.subscribe-button {
-  height: 40px;
-  justify-content: right;
-}
-
-.subscribe-button-clicked {
-  background-color: gray;
-  height: 40px;
-}
 
 .view-count {
   padding-right: 5px;

@@ -43,6 +43,13 @@ import { CommentsComponent } from './comments/comments.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { SuggestionBarComponent } from './suggestion-bar/suggestion-bar.component';
 import { VideoCardLandscapeComponent } from './video-card-landscape/video-card-landscape.component';
+import { UserChannelComponent } from './user-channel/user-channel.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ChannelPlaylistsComponent } from './channel-playlists/channel-playlists.component';
+import { ChannelChannelsComponent } from './channel-channels/channel-channels.component';
+import { ChannelAboutComponent } from './channel-about/channel-about.component';
+import { ChannelVideosComponent } from './channel-videos/channel-videos.component';
+import { ChannelCardComponent } from './channel-card/channel-card.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +69,13 @@ import { VideoCardLandscapeComponent } from './video-card-landscape/video-card-l
     CallbackComponent,
     CommentsComponent,
     SuggestionBarComponent,
-    VideoCardLandscapeComponent
+    VideoCardLandscapeComponent,
+    UserChannelComponent,
+    ChannelPlaylistsComponent,
+    ChannelChannelsComponent,
+    ChannelAboutComponent,
+    ChannelVideosComponent,
+    ChannelCardComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +104,7 @@ import { VideoCardLandscapeComponent } from './video-card-landscape/video-card-l
     MatListModule,
     MatCardModule,
     MatMenuModule,
+    MatTabsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

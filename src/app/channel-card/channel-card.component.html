@@ -1,0 +1,23 @@
+<div class="main-card" *ngIf="this.cardAvailable">
+    <div class="user-card-pic">
+        <a>
+            <img [src]="this.channelData.profilePicUrl" class="profile-pic">
+        </a>
+    </div>
+    <div class="channel-title">
+        <div class="channel-card-name">
+            <div class="card-title">
+                <mat-card-title class="">@{{this.channelData.channelName}}</mat-card-title>
+            </div>
+            <div class="channel-sub-count">
+                <mat-card-subtitle>{{formatNumber(this.channelData.subscribers.length)}}</mat-card-subtitle>
+            </div>
+        </div>  
+    </div>
+
+    <div class="sub-button">
+        <button *ngIf="showSubscribeButton" class="subscribe-button" mat-fab extended color="warn" (click)="subscribeToUser()">SUBSCRIBE</button>
+    
+        <button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked" mat-fab extended color="accent" (click)="unSubscribeToUser()">UNSUBSCRIBE</button>
+    </div>
+</div>
